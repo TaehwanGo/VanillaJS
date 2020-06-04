@@ -13,10 +13,10 @@ if(age >= 18 && age <= 21){
 }
 */
 
-// 2-6
+// 2-6, 2-7
 
 const title = document.querySelector("#title");
-
+/*
 const BASE_COLOR = "rgb(52, 73, 94)";
 const OTHER_COLOR = "#7f8c8d";
 
@@ -31,9 +31,25 @@ function handleClick(){
         title.style.color = BASE_COLOR;
     }
 }
+*/
+const CLICKED_CLASS = "clicked";
+
+function handleClick(){
+    // // const currentClass = title.className;
+    // // console.log(currentClass);
+    // const hasClass  = title.classList.contains(CLICKED_CLASS);
+    // if(!hasClass){ // currentClass !== CLICKED_CLASS)
+    //     // title.className = CLICKED_CLASS;
+    //     title.classList.add(CLICKED_CLASS);
+    // }
+    // else{
+    //     // title.className = "";
+    //     title.classList.remove(CLICKED_CLASS);
+    // }
+    title.classList.toggle(CLICKED_CLASS);
+}
 
 function init(){
-    title.style.color = BASE_COLOR;
     title.addEventListener("click", handleClick);
     // title.addEventListener("mouseenter", handleClick);
 }

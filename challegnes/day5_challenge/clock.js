@@ -14,7 +14,7 @@ const clockContainer = document.querySelector(".js-clock"),
 
 function getTime(){
     // current time
-    const currentDate = new Date();  // .getTime();
+    const currentDate = new Date().getTime();  // .getTime();
     console.log(currentDate);
     // const currentMinutes = currentDate.getMinutes();
     // const currentHours = currentDate.getHours();
@@ -22,7 +22,7 @@ function getTime(){
 
     // Christmas time
     const theDate = new Date("Dec 25,2020,00:00:00"); // .getTime()
-    // const yearOfTheDay = currentDate.getYear(); // it doesn't work 
+    // const yearOfTheDay = currentDate.getFullYear(); // getYear(); -> 120 it doesn't work // getFullYear(); -> 2020
     // console.log(yearOfTheDay); // 120 // I don't know why it is 120 instead of 2020
     // const monthOfTheDay = 12;
     // const dayOfTheDay = 24;

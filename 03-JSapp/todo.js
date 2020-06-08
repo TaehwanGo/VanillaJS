@@ -4,17 +4,31 @@ toDoList = document.querySelector(".js-toDoList"); // ul 태그
 
 const TODOS_LS = 'toDos';
 
-function paintToDo(text) {
+const toDos = []; // empty array
+
+function saveTodos(){
+    localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
+}
+
+function paintToDo(text) { // 3.6 : 해야할일을 생성할때마다 toDos라는 array에 추가되도록 할 것임 
     // 새로운 방식으로 접근하는 방법, 우리가 뭔가를 생성하기를 원한다면?
     const li = document.createElement("li"); // li태그를 생성 
     const delBtn = document.createElement("button"); // li태그 안에 들어갈 삭제버튼을 만듦(아직 li태그안에 넣진 않았음)
     delBtn.innerText = "❌"; // delBtn.value로 하면 console.log에선 찍히는데 브라우저 화면엔 안나옴 // 추가로 head에서 meta.charset을 설정안하면 innerHTML은 안됨 
-    console.log(delBtn.innerText);
+    // console.log(delBtn.innerText);
     const span = document.createElement("span"); // li태그 안에 들어갈 텍스트 : span태그를 만들고
+    const newId = toDos.length + 1;
     span.innerText = text; // 그 span태그 안에 innerText로 글자를 적음 ( parameter로 전달 받은 text 변수에 있는 값 )
     li.appendChild(span); // li태그 안에 span태그를 넣음
     li.appendChild(delBtn); // li태그 안에 삭제 버튼을 넣음
     toDoList.appendChild(li); // 마지막으로 완성된 li를 ul태그에 넣음
+
+    const toDoObj = {
+        text: text,
+        id: newId
+    };
+    toDos.push(toDoObj); // toDos array에 toDosObj object를 추가함(자바의 arrayList에서 add()같은 느낌);
+    saveTodos();
 }
 
 function handleSubmit(event){ // 만약 여기 파라미터로 event없다면? 이건 없어도 됨
@@ -25,9 +39,17 @@ function handleSubmit(event){ // 만약 여기 파라미터로 event없다면? �
 }
 
 function loadTodos() {
-    const toDos = localStorage.getItem(TODOS_LS);
-    if(toDos !== null){
+    const loadedToDos = localStorage.getItem(TODOS_LS);
+    if(loadedToDos !== null){
+        // console.log(loadedToDos); // JSON
+        const parsedToDos = JSON.parse(loadedToDos);
+        // console.log(parsedToDos); // parsed Object
 
+        // 모든 parsedToDos 배열의 항목마다 paintToDo() 를 실행시킬 것임
+        parsedToDos.forEach(toDo => {
+            // console.log(toDo.text);
+            paintToDo(toDo.text);
+        });
     }
 }
 

@@ -4,9 +4,31 @@ toDoList = document.querySelector(".js-toDoList"); // ul 태그
 
 const TODOS_LS = 'toDos';
 
-const toDos = []; // empty array
+let toDos = []; // empty array
 
-function saveTodos(){
+function filterFn(toDo){
+    // create an array with the items that function returns true
+    return toDo.id === 1;
+}
+
+function deleteToDo(event){
+    // console.log(event.target);
+    // console.log(event.target.parentNode);
+    const btn = event.target;
+    const li = btn.parentNode;
+    toDoList.removeChild(li);
+    // cleanToDos와 filter가 하는 것은 filterFn이 체크가 된 아이템들의 array를 주는 것
+    const cleanToDos = toDos.filter(function(toDo){
+        // console.log(toDo.id, li.id); // toDo.id는 숫자, li.id는 string
+        return toDo.id !== parseInt(li.id); 
+    }); 
+    toDos = cleanToDos;
+    saveToDos();
+    
+    console.log(cleanToDos);
+}
+
+function saveToDos(){
     localStorage.setItem(TODOS_LS, JSON.stringify(toDos));
 }
 
@@ -16,11 +38,13 @@ function paintToDo(text) { // 3.6 : 해야할일을 생성할때마다 toDos라�
     const delBtn = document.createElement("button"); // li태그 안에 들어갈 삭제버튼을 만듦(아직 li태그안에 넣진 않았음)
     delBtn.innerText = "❌"; // delBtn.value로 하면 console.log에선 찍히는데 브라우저 화면엔 안나옴 // 추가로 head에서 meta.charset을 설정안하면 innerHTML은 안됨 
     // console.log(delBtn.innerText);
+    delBtn.addEventListener("click", deleteToDo);
     const span = document.createElement("span"); // li태그 안에 들어갈 텍스트 : span태그를 만들고
     const newId = toDos.length + 1;
     span.innerText = text; // 그 span태그 안에 innerText로 글자를 적음 ( parameter로 전달 받은 text 변수에 있는 값 )
     li.appendChild(span); // li태그 안에 span태그를 넣음
     li.appendChild(delBtn); // li태그 안에 삭제 버튼을 넣음
+    li.id = newId; // 이걸 추가 안했어서 그동안 li태그 안에 id값이 없었네 
     toDoList.appendChild(li); // 마지막으로 완성된 li를 ul태그에 넣음
 
     const toDoObj = {

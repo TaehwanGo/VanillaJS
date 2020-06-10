@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styles.css">
+  </head>
+
+  <body>
+    <header>
+        <h1>Random Number Game</h1>
+        <div>Generate a number between 0 and <span class="js-range__number">10</span></div>    
+    </header>
+    
+    <main>
+        <input class="js-input__range" type="range" value="0" min="0" max="20">
+        <form class="js-form">
+            <span class="form__text">Guess the number</span>
+            <input class="js-input" type="text">
+            <input class="js-form__submit" type="submit" value="Play!">
+        </form>
+        <div class="result js-result">
+            <div class="result__number">
+                <span>You chose: </span>
+                <span class="js-result__number__mine">20</span><span>, the machine chose: </span>
+                <span class="js-result__number__random">15</span>
+            </div>
+            <div class="js-result__game">test</div>
+        </div>
+    </main>
+    
+
+    <script src="index.js"></script>
+  </body>
+</html>

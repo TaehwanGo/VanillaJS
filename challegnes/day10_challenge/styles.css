@@ -1,0 +1,26 @@
+header div {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+main {
+    font-weight: 600;
+}
+
+.result .result__game {
+    font-size: 20px;
+}
+
+.result {
+    display: none;
+    /* display: block; */
+}
+
+.show {
+    display: block;
+}
+
+input[type="range"]{
+    /* width: 300px; */
+    
+}

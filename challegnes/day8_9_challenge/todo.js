@@ -53,7 +53,7 @@ function saveFinList(){
 
 function checkId(anId) {
     if(anId == undefined){
-        anId = Date.now();
+        anId = String(Date.now()); 
         // console.log(anId);
     }
     return anId;

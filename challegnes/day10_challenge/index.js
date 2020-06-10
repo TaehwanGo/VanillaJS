@@ -44,7 +44,7 @@ function checkResult(event) {
 
 function init() {
     form.addEventListener("submit", checkResult);
-    rangeInput.addEventListener("input", getInputRange)
+    rangeInput.addEventListener("input", getInputRange);
 }
 
 init();

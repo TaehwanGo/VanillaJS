@@ -25,7 +25,7 @@ function deleteToDo(event){
     toDos = cleanToDos;
     saveToDos();
     
-    console.log(cleanToDos);
+    // console.log(cleanToDos);
 }
 
 function saveToDos(){
@@ -41,7 +41,7 @@ function paintToDo(text, newId) { // 3.6 : 해야할일을 생성할때마다 to
     delBtn.addEventListener("click", deleteToDo);
     const span = document.createElement("span"); // li태그 안에 들어갈 텍스트 : span태그를 만들고
     // const newId = toDos.length + 1;
-    console.log(newId);
+    // console.log(newId);
     if(newId == undefined){
         newId = Date.now();
         console.log(newId);

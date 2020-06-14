@@ -8,20 +8,28 @@
 </head>
 <body>
     <!-- div의 class를 clock으로 하지 않은 이유는 js에서도 사용할 것이라는 것을 알려주기 위해  -->
-    <div class="js-clock">
-        <h1>00:00</h1>
-    </div>
-    <form class="js-form form">
-        <input type="text" placeholder="what is your name?"/>
-    </form>
-    <h4 class="js-greetings greetings"></h4>
-
-    <form class="js-toDoForm">
-        <input type="text" placeholder="Write a to do"/>
-    </form>
-    <ul class="js-toDoList">
-    </ul>
-    <span class="js-weather"></span>
+    <header>
+        <span class="js-weather"></span>
+    </header>
+    <main>
+        <div class="contents">
+            <div class="js-clock">
+                <h1>00:00</h1>
+            </div>
+            <form class="js-form form">
+                <input type="text" placeholder="what is your name?"/>
+            </form>
+            <h4 class="js-greetings greetings"></h4>
+        
+            <form class="js-toDoForm">
+                <input type="text" placeholder="Write a to do"/>
+            </form>
+            <ul class="js-toDoList">
+            </ul>
+        </div>
+    </main>
+    
+    
 
     <script src="clock.js"></script>
     <script src="greeting.js"></script>
